@@ -5,4 +5,8 @@
     <string name="get_started">Get Started</string>
     <string name="kh_m_ph_v_t_v_nh_ng_b_phim_m_i_nh_t_t_i_r_p_chi_u_phim_y_u_th_ch_c_a_b_n_d_d_ng_v_nhanh_ch_ng">Khám phá và đặt vé những bộ phim mới nhất tại rạp chiếu phim yêu thích của bạn. Dễ dàng và nhanh chóng!</string>
     <string name="b_t_u">Bắt đầu</string>
+    <string name="xem_t_t_c">Xem tất cả</string>
+    <string name="s_p_ph_t_h_nh">Sắp phát hành</string>
+    <string name="t_m_ki_m_phim">Tìm kiếm phim</string>
+    <string name="top_phim">Top phim</string>
 </resources>

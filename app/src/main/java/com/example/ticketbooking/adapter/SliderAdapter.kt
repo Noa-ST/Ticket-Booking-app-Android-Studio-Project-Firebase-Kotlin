@@ -2,7 +2,6 @@ package com.example.ticketbooking.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.RoundedCorner
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
