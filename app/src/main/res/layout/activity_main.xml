@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,16 +26,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="16dp"
-                android:padding="12dp"
+                android:background="@drawable/light_black_bg"
                 android:drawableStart="@drawable/search"
                 android:drawableEnd="@drawable/microphone"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
                 android:drawablePadding="8dp"
-                android:background="@drawable/light_black_bg"
                 android:ems="10"
                 android:inputType="text"
-                android:text="@string/t_m_ki_m_phim" />
+                android:padding="12dp"
+                android:text="@string/t_m_ki_m_phim"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -75,17 +76,17 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/top_phim"
-                    android:textSize="18sp"
                     android:textColor="@color/yellow"
-                    android:textStyle="bold"/>
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/seeallTopMovies"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/xem_t_t_c"
-                    android:textSize="14sp"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -146,13 +147,14 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewUpcoming"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"  android:layout_width="match_parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
                     android:id="@+id/progressBarUpcoming"
@@ -167,4 +169,18 @@
 
         </LinearLayout>
     </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/light_black_bg"
+        android:padding="4dp"
+        app:cnb_iconSize="20dp"
+        app:cnb_iconColor="@color/white"
+        app:cnb_menuResource="@menu/bottom_menu"
+        app:cnb_orientationMode="horizontal"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        /></androidx.constraintlayout.widget.ConstraintLayout>
