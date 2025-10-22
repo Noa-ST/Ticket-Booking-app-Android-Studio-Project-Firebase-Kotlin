@@ -19,26 +19,26 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/filmPic"
                 android:layout_width="0dp"
                 android:layout_height="600dp"
                 android:scaleType="centerCrop"
+                android:contentDescription="@string/filmposterdescription"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/backBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp
-"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="48dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="@string/backbuttondescription"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/back_dark" />
@@ -46,16 +46,16 @@
             <eightbitlab.com.blurview.BlurView
                 android:id="@+id/blueView"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="24dp"
                 app:blurOverlayColor="#90000000"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                app:layout_constraintBottom_toBottomOf="@+id/filmPic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                tools:layout_editor_absolutex="24dp0">>
+                app:layout_constraintTop_toBottomOf="@+id/filmPic">
 
                 <LinearLayout
+                    android:id="@+id/buyTicketBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/blur_bg"
@@ -63,7 +63,7 @@
                     android:paddingStart="16dp"
                     android:paddingTop="16dp"
                     android:paddingEnd="16dp"
-                    android:paddingBottom="">
+                    android:paddingBottom="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -71,28 +71,29 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView"
-                            android:layout_width="match_parent"
+                            android:id="@+id/titleTxT"
+                            android:layout_width="321dp"
                             android:layout_height="wrap_content"
-                            android:text="Title"
+                            android:text="@string/title"
                             android:textColor="@color/white"
                             android:textSize="30sp"
                             android:textStyle="bold" />
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/bookmarkBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginEnd="16dp"
+                            android:contentDescription="@string/bookmark_button_description"
                             app:srcCompat="@drawable/bookmark" />
 
                         <ImageView
-                            android:id="@+id/imageView5"
+                            android:id="@+id/shareBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-
+                            android:contentDescription=" "
                             app:srcCompat="@drawable/share" />
 
                     </LinearLayout>
@@ -109,7 +110,7 @@
                         android:id="@+id/view"
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:layout_marginHorizontal="16dp"
+                        android:layout_margin="16dp"
 
                         android:background="@drawable/gradient2_bg" />
 
@@ -120,18 +121,17 @@
 
                         <TextView
                             android:id="@+id/movieTimeTxt"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="year"
+                            android:text="@string/year"
                             android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/imdbTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
-                            android:text="imdb"
+                            android:text="@string/imdb"
                             android:textColor="@color/white" />
                     </LinearLayout>
 
@@ -140,45 +140,49 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="summery"
+                        android:text="@string/summery"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/moviesummeryTxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="description"
+                        android:text="@string/description"
                         android:textColor="@color/white"
-                        android:textSize="14dp" />
-
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="cast"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
+                        android:textSize="14sp" /> <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/casts"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/castlistView"
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:layout_height="match_parent" />
+                        android:paddingEnd="8dp" />
 
 
                 </LinearLayout>
 
             </eightbitlab.com.blurview.BlurView>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"
-                android:layout_width="match_parent"
+                style="@android:style/Widget.Button"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Button"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="800dp" />
+                android:background="@drawable/green_bg"
+                android:text="@string/buy_ticket"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/blueView" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

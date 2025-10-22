@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.TicketBooking" parent="Base.Theme.TicketBooking" />
+    <style name="ImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
