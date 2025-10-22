@@ -1,11 +1,9 @@
-package com.example.ticketbooking
+package com.example.ticketbooking.activity
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.ticketbooking.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.ticketbooking
+package com.example.ticketbooking.activity
 
 import android.os.Bundle
 import android.os.Handler
