@@ -15,7 +15,7 @@
             android:name=".activity.SeatListActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.DetailFilmActivity2"
+            android:name=".activity.DetailFilmActivity"
             android:exported="false" />
         <activity
             android:name=".activity.SplashActivity"

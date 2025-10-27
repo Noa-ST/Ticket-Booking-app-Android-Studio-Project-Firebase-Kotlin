@@ -12,5 +12,5 @@ data class Film(
     var Year: Int=0,
     var Price: Double=0.0,
     var Genre: ArrayList<String> = ArrayList(),
-    var Costs: ArrayList<Cast> = ArrayList()
+    var Casts: ArrayList<Cast> = ArrayList()
 ): Serializable
