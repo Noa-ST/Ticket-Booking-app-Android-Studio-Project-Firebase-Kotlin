@@ -1,0 +1,40 @@
+# Được tạo bởi Android Studio và Gradle
+
+## Tệp Build, Cache và Gradle ##
+/local.properties
+/.gradle/
+/build/
+/captures/
+.externalNativeBuild/
+**/*.orig
+.cxx/
+*.log
+
+# Tệp của module/app
+/app/build/
+
+## Tệp Cấu hình IDE (Android Studio) ##
+
+# Tệp bị bỏ qua theo mặc định, không cần thiết để chia sẻ giữa các nhà phát triển
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/libraries/
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/shelf/
+.idea/caches/
+
+# Tệp Android Studio tạo ra
+*.iml
+*.iws
+*.ipr
+
+## Tệp Cấu hình Hệ thống ##
+# Tệp hệ thống macOS
+.DS_Store
+# Tệp hệ thống Windows
+Thumbs.db
+
+# Keystore/Signing files (KHÔNG bao giờ commit khóa bảo mật)
+*.keystore
