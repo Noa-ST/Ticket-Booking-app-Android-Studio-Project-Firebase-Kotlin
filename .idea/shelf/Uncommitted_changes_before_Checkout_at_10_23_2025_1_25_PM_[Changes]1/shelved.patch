@@ -1,0 +1,40 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.TicketBooking\">\r\n        <activity\r\n            android:name=\".activity.DetailFilmActivity2\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".activity.SplashActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity\r\n            android:name=\".activity.MainActivity\"\r\n            android:exported=\"true\"></activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 0cbb494473e26307aca512e551b90e0fbf5dd13b)
++++ b/app/src/main/AndroidManifest.xml	(date 1761200476230)
+@@ -11,11 +11,9 @@
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+         android:theme="@style/Theme.TicketBooking">
++
+         <activity
+-            android:name=".activity.DetailFilmActivity2"
+-            android:exported="false" />
+-        <activity
+-            android:name=".activity.SplashActivity"
++            android:name=".SplashActivity"
+             android:exported="true">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+@@ -23,9 +21,12 @@
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
++
+         <activity
+-            android:name=".activity.MainActivity"
+-            android:exported="true"></activity>
++            android:name=".MainActivity"
++            android:exported="true">
++        </activity>
++
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
