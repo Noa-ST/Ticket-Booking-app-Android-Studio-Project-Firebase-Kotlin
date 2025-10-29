@@ -13,14 +13,16 @@ import com.example.ticketbooking.model.Film
 
 class FilmListAdapter(private val items: ArrayList<Film>): RecyclerView.Adapter<FilmListAdapter.Viewhodler>() {
     private var context: Context? = null
-
-
     inner class Viewhodler(private var binding: ViewholderFilmBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Film){
             binding.nameTxt.text = item.Title
-            var requestOptions = RequestOptions().transform(CenterCrop(), RoundedCorners(30))
+            var requestOptions = RequestOptions()
+                .transform(CenterCrop(), RoundedCorners(30))
 
-            Glide.with(context!!).load(item.Poster).apply(requestOptions).into(binding.pic)
+            Glide.with(context!!)
+                .load(item.Poster)
+                .apply(requestOptions)
+                .into(binding.pic)
         }
     }
 

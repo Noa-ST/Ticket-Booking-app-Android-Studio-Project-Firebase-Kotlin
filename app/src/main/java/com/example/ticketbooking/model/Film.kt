@@ -11,6 +11,8 @@ data class Film(
     var Imdb: Int=0,
     var Year: Int=0,
     var Price: Double=0.0,
-    var Genre: ArrayList<String> = ArrayList(),
-    var Casts: ArrayList<Cast> = ArrayList()
+    var Genre: ArrayList<String>? = null,
+    var Casts: ArrayList<Cast>? = null
+    //var Genre: ArrayList<String> = ArrayList(),
+    //var Casts: ArrayList<Cast> = ArrayList()
 ): Serializable
