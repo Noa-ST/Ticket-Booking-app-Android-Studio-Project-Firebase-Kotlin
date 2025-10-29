@@ -19,7 +19,6 @@ import com.example.ticketbooking.model.Film
 import eightbitlab.com.blurview.RenderScriptBlur
 
 class DetailFilmActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityDetailFilmBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,11 +31,12 @@ class DetailFilmActivity : AppCompatActivity() {
 
     private fun setVariable() {
         // Nhận dữ liệu từ Intent
-        val film = intent.getSerializableExtra("object") as? Film ?: return
+        val film = intent.getSerializableExtra("object") as Film
 
         // Bo góc dưới ảnh poster
         val requestOptions = RequestOptions()
-            .transform(CenterCrop(), GranularRoundedCorners(0f, 0f, 50f, 50f))
+            .transform(CenterCrop(),
+                GranularRoundedCorners(0f, 0f, 50f, 50f))
 
         Glide.with(this)
             .load(film.Poster)
@@ -66,10 +66,9 @@ class DetailFilmActivity : AppCompatActivity() {
 
         // Adapter thể loại phim
         film.Genre?.let {
+            binding.genreView.adapter = GenreEachFilmAdapter(it)
             binding.genreView.layoutManager =
                 LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-            binding.genreView.adapter = GenreEachFilmAdapter(it)
-
         }
 
         // Adapter danh sách diễn viên

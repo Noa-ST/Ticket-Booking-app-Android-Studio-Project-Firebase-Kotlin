@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -19,12 +20,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
 
             <ImageView
                 android:id="@+id/filmPic"
                 android:layout_width="0dp"
-                android:layout_height="600dp"
+                android:layout_height="500dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.058"
                 app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +47,7 @@
             <eightbitlab.com.blurview.BlurView
                 android:id="@+id/blueView"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="400dp"
                 android:layout_margin="24dp"
                 app:blurOverlayColor="#90000000"
                 app:layout_constraintBottom_toBottomOf="@+id/filmPic"
@@ -94,7 +95,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             app:srcCompat="@drawable/share" />
-
                     </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -123,15 +123,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="year"
+                            android:text="Year"
                             android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/imdbTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
-                            android:text="imdb"
+                            android:text="Imdb"
                             android:textColor="@color/white" />
                     </LinearLayout>
 
@@ -140,7 +139,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="summery"
+                        android:text="Summery"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -148,7 +147,7 @@
                         android:id="@+id/movieSummeryTxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="description"
+                        android:text="Description"
                         android:textColor="@color/white"
                         android:textSize="14sp"/>
 
@@ -157,7 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="cast"
+                        android:text="Cast"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -173,12 +172,12 @@
 
             </eightbitlab.com.blurview.BlurView>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
+                android:background="@color/green"
                 android:id="@+id/buyTicketBtn"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="@color/green"
-                android:text="buy_ticket"
+                android:text="Buy_ticket"
                 style="@android:style/Widget.Holo.Button"
                 android:textColor="@color/white"
                 android:textSize="18sp"
