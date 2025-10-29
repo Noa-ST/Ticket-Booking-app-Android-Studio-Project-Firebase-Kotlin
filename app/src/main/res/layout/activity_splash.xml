@@ -5,9 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".activity.SplashActivity">
 
-    <ScrollView
+<ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
@@ -26,10 +27,10 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:scaleType="centerCrop"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:background="@color/black"
+                    android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -50,35 +51,33 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
                 android:text="@string/cinema_ticket_booking"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
-                android:textStyle="bold|italic"
-                android:layout_marginTop="60dp"             />
+                android:textStyle="bold|italic" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/kh_m_ph_v_t_v_nh_ng_b_phim_m_i_nh_t_t_i_r_p_chi_u_phim_y_u_th_ch_c_a_b_n_d_d_ng_v_nhanh_ch_ng"
-                android:textSize="20sp"
-                android:textColor="@color/white"
                 android:textAlignment="center"
-          />
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/startBtn"
+                style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
                 android:text="@string/b_t_u"
                 android:background="@drawable/green_bg"
-                style="@android:style/Widget.Button"
+                android:layout_margin="32dp"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 

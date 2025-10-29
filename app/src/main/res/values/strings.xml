@@ -9,16 +9,8 @@
     <string name="s_p_ph_t_h_nh">Sắp phát hành</string>
     <string name="t_m_ki_m_phim">Tìm kiếm phim</string>
     <string name="top_phim">Top phim</string>
-    <string name="title">Title</string>
-    <string name="year">year</string>
-    <string name="imdb">imdb</string>
-    <string name="summery">summery</string>
-    <string name="description">description</string>
-    <string name="cast">cast</string>
-    <string name="buy_ticket">Buy Ticket</string>
-    <string name="casts">casts</string>
-    <string name="backbuttondescription" />
-    <string name="filmposterdescription" />
-    <string name="bookmark_button_description" />
-    <string name="share_button_description" />
+    <string name="hello_pitter_jackson">Hello Pitter Jackson</string>
+    <string name="pitterjackson">pitterjackson</string>
+    <string name="pitterjackson1">pitterjackson</string>
+    <string name="pitterjacksonn">pitterjackson</string>
 </resources>
