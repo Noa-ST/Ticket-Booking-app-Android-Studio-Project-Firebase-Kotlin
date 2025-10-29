@@ -37,7 +37,8 @@ class SeatListActivity : AppCompatActivity() {
     }
     private fun initTimeDatelist() {
         binding.apply {
-            LinearLayoutManager (this@SeatListActivity, LinearLayoutManager.HORIZONTAL, false)
+            dateRecyclerview.layoutManager =
+                LinearLayoutManager (this@SeatListActivity, LinearLayoutManager.HORIZONTAL, false)
             dateRecyclerview.adapter= DateAdapter(generateDates())
         }
     }
