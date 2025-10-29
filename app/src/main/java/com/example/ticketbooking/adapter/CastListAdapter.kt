@@ -14,26 +14,28 @@ class CastListAdapter(private val cast: ArrayList<Cast>) :
     inner class ViewHolder(private val binding: ViewholderCastBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(cast: Cast) {
+            val context = binding.root.context
             context?.let {
                 Glide.with(it)
-                    .load(cast.Picurl)
+                    .load(cast.PicUrl)
                     .into(binding.actorImage)
             }
             binding.nameTxt.text = cast.Actor
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): CastListAdapter.ViewHolder {
         context = parent.context
         val binding =
-            ViewholderCastBinding.inflate(LayoutInflater.from(context),
-                parent, false)
+            ViewholderCastBinding.inflate(LayoutInflater.from(context), parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(cast[position])
     }
-
     override fun getItemCount(): Int = cast.size
 }
