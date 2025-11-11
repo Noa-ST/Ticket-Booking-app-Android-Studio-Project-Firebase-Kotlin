@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.ticketbooking.databinding.ViewholderCastBinding
 import com.example.ticketbooking.model.Cast
 
-class CastListAdapter(private val cast: ArrayList<Cast>) :
+class CastListAdapter(private val cast: List<Cast>) :
     RecyclerView.Adapter<CastListAdapter.ViewHolder>() {
     private var context: Context? = null
     inner class ViewHolder(private val binding: ViewholderCastBinding) :

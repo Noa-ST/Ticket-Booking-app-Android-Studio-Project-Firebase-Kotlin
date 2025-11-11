@@ -4,7 +4,7 @@ import com.example.ticketbooking.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ticketbooking.databinding.ItemDataBinding
+import com.example.ticketbooking.databinding.ItemTimeBinding
 
 class TimeAdapter(private val timeSlots: List<String>) :
     RecyclerView.Adapter<TimeAdapter.ViewHolder>() {

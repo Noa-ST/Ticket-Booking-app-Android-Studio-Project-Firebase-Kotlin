@@ -1,11 +1,12 @@
 package com.example.ticketbooking.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.os.Handler
 import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -14,17 +15,15 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.ticketbooking.adapter.FilmListAdapter
 import com.example.ticketbooking.adapter.SliderAdapter
 import com.example.ticketbooking.databinding.ActivityMainBinding
-import com.example.ticketbooking.model.Film
+import com.example.ticketbooking.ui.common.UiState
+import com.example.ticketbooking.ui.main.MainViewModel
 import com.example.ticketbooking.model.SliderItems
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var database: FirebaseDatabase
+    private val viewModel: MainViewModel by viewModels()
     private var sliderHandler = Handler()
     private var sliderRunnable = Runnable {
         binding.viewPager2.currentItem = binding.viewPager2.currentItem + 1
@@ -36,68 +35,56 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
-        database = FirebaseDatabase.getInstance()
-        initBanner()
-        initTopMovies()
-        initUpcomming()
+        bindObservers()
+        viewModel.loadBanners()
+        viewModel.loadTopMovies()
+        viewModel.loadUpcoming()
 
     }
 
-    private fun initTopMovies() {
-        val myRef: DatabaseReference = database.getReference("Items")
-        binding.progressBarTopMovie.visibility = View.VISIBLE
-        val items = ArrayList<Film>()
-
-        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (i in snapshot.children) {
-                        val item = i.getValue(Film::class.java)
-                        if (item != null) {
-                            items.add(item)
-                        }
-                    }
-                    if (items.isNotEmpty()) {
-                        binding.recyclerViewTopMovie.layoutManager =
-                            LinearLayoutManager(
-                                this@MainActivity,
-                                LinearLayoutManager.HORIZONTAL,
-                                false
-                            )
-                        binding.recyclerViewTopMovie.adapter = FilmListAdapter(items)
-                    }
+    private fun bindObservers() {
+        viewModel.banners.observe(this) { state ->
+            when (state) {
+                is UiState.Loading -> binding.progressBarSlider.visibility = View.VISIBLE
+                is UiState.Success -> {
+                    binding.progressBarSlider.visibility = View.GONE
+                    banners(state.data.toMutableList())
                 }
-                binding.progressBarTopMovie.visibility = View.GONE
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                binding.progressBarTopMovie.visibility = View.GONE
-                Log.e("Firebase_Error", "Tải dữ liệu thất bại: ${error.message}")
-            }
-        })
-    }
-
-    private fun initBanner() {
-        val myRef = database.getReference("Banners")
-        binding.progressBarSlider.visibility = View.VISIBLE
-
-        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val lists = mutableListOf<SliderItems>()
-                for (i in snapshot.children) {
-                    val list = i.getValue(SliderItems::class.java)
-                    if (list != null) {
-                        lists.add(list)
-                    }
+                is UiState.Error -> {
+                    binding.progressBarSlider.visibility = View.GONE
                 }
-                binding.progressBarSlider.visibility = View.GONE
-                banners(lists)
             }
+        }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+        viewModel.topMovies.observe(this) { state ->
+            when (state) {
+                is UiState.Loading -> binding.progressBarTopMovie.visibility = View.VISIBLE
+                is UiState.Success -> {
+                    binding.progressBarTopMovie.visibility = View.GONE
+                    binding.recyclerViewTopMovie.layoutManager =
+                        LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+                    binding.recyclerViewTopMovie.adapter = FilmListAdapter(state.data)
+                }
+                is UiState.Error -> {
+                    binding.progressBarTopMovie.visibility = View.GONE
+                }
             }
-        })
+        }
+
+        viewModel.upcoming.observe(this) { state ->
+            when (state) {
+                is UiState.Loading -> binding.progressBarUpcoming.visibility = View.VISIBLE
+                is UiState.Success -> {
+                    binding.progressBarUpcoming.visibility = View.GONE
+                    binding.recyclerViewUpcoming.layoutManager =
+                        LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+                    binding.recyclerViewUpcoming.adapter = FilmListAdapter(state.data)
+                }
+                is UiState.Error -> {
+                    binding.progressBarUpcoming.visibility = View.GONE
+                }
+            }
+        }
     }
 
     private fun banners(list: MutableList<SliderItems>) {
@@ -126,39 +113,5 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun initUpcomming() {
-        val myRef: DatabaseReference = database.getReference("Upcomming")
-        binding.progressBarUpcoming.visibility = View.VISIBLE
-        val items = ArrayList<Film>()
-
-        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (i in snapshot.children) {
-                        val list = i.getValue(Film::class.java)
-                        if (list != null) {
-                            items.add(list)
-                        }
-                    }
-                    if (items.isNotEmpty()) {
-                        binding.recyclerViewUpcoming.layoutManager =
-                            LinearLayoutManager(
-                                this@MainActivity,
-                                LinearLayoutManager.HORIZONTAL,
-                                false
-                            )
-                        binding.recyclerViewUpcoming.adapter =
-                            FilmListAdapter(
-                                items
-                            )
-                    }
-                    binding.progressBarUpcoming.visibility = View.GONE
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-    }
+    // banners() giữ nguyên
 }

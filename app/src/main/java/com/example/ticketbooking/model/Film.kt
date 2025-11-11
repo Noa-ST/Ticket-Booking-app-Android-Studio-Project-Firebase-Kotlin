@@ -1,7 +1,9 @@
 package com.example.ticketbooking.model
 
-import java.io.Serializable
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Film(
     var Title: String?=null,
     var Description: String?=null,
@@ -15,4 +17,4 @@ data class Film(
     var Casts: ArrayList<Cast>? = null
     //var Genre: ArrayList<String> = ArrayList(),
     //var Casts: ArrayList<Cast> = ArrayList()
-): Serializable
+): Parcelable

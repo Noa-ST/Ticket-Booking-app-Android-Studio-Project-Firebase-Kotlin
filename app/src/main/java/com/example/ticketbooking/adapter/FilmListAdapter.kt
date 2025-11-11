@@ -11,9 +11,10 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.ticketbooking.activity.DetailFilmActivity
 import com.example.ticketbooking.databinding.ViewholderFilmBinding
+import com.example.ticketbooking.common.IntentKeys
 import com.example.ticketbooking.model.Film
 
-class FilmListAdapter(private val items: ArrayList<Film>): RecyclerView.Adapter<FilmListAdapter.Viewhodler>() {
+class FilmListAdapter(private val items: List<Film>): RecyclerView.Adapter<FilmListAdapter.Viewhodler>() {
     private var context: Context? = null
     inner class Viewhodler(private var binding: ViewholderFilmBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Film){
@@ -27,7 +28,7 @@ class FilmListAdapter(private val items: ArrayList<Film>): RecyclerView.Adapter<
                 .into(binding.pic)
             binding.root.setOnClickListener {
                 val intent= Intent(context,DetailFilmActivity::class.java)
-                intent.putExtra("object", item)
+                intent.putExtra(IntentKeys.OBJECT, item)
                 context?.startActivity(intent)
             }
         }

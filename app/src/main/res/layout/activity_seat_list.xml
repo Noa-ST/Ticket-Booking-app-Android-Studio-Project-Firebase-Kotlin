@@ -77,7 +77,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/cinema" />
 
-                <androidx.recyclerview.widget.RecyclerView
+                <com.example.ticketbooking.ui.seat.ZoomRecyclerView
+                    android:id="@+id/seatRecyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="48dp"
