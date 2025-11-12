@@ -47,7 +47,14 @@ class SeatListAdapter(private var seatList: List<Seat>,
             }
         }
         holder.binding.seatTxt.setOnClickListener {
-            onSeatClick(position)
+            val pos = holder.bindingAdapterPosition
+            if (pos == RecyclerView.NO_POSITION) return@setOnClickListener
+
+            // Chỉ cho phép tương tác khi ghế Available hoặc Selected (toggle)
+            when (seatList[pos].status) {
+                Seat.SeatStatus.AVAILABLE, Seat.SeatStatus.SELECTED -> onSeatClick(pos)
+                Seat.SeatStatus.UNAVAILABLE -> { /* bỏ qua */ }
+            }
         }
     }
     override fun getItemCount(): Int = seatList.size

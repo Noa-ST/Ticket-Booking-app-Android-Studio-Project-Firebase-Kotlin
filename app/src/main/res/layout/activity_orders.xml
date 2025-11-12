@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/back_dark"
+            android:contentDescription="back" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giỏ hàng"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginStart="12dp" />
+    </LinearLayout>
+
+    <!-- Bộ lọc trạng thái -->
+    <LinearLayout
+        android:id="@+id/filterBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/filterAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tất cả"
+            android:textColor="@color/black"
+            android:padding="8dp"
+            android:background="@drawable/orange_bg" />
+
+        <TextView
+            android:id="@+id/filterHeld"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HELD"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/light_black_bg" />
+
+        <TextView
+            android:id="@+id/filterPaid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAID"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/light_black_bg" />
+
+        <TextView
+            android:id="@+id/filterCancelled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CANCELLED"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/light_black_bg" />
+
+        <TextView
+            android:id="@+id/filterExpired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EXPIRED"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/light_black_bg" />
+    </LinearLayout>
+
+    <!-- Tìm kiếm + Sắp xếp -->
+    <LinearLayout
+        android:id="@+id/searchSortBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/filterBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/search"
+                android:tint="@color/white"
+                android:contentDescription="search"/>
+
+            <EditText
+                android:id="@+id/searchInputOrders"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:hint="Tìm mã đơn / phim..."
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/sortSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:spinnerMode="dropdown"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewOrders"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/searchSortBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/progressBarOrders" />
+
+    <ProgressBar
+        android:id="@+id/progressBarOrders"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp" />
+
+    <TextView
+        android:id="@+id/emptyTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chưa có đơn hàng"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/filterBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        android:layout_marginTop="24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

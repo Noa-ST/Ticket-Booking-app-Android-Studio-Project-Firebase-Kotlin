@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <application
+    <!-- Quyền mạng để Firebase ghi/đọc dữ liệu -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+<application
         android:name=".TicketBookingApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,15 +27,34 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- Khai báo ProfileActivity đặt ngoài intent-filter -->
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true" />
         <activity
             android:name=".activity.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PaymentSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.OrdersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.FavoritesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SearchActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.SeeAllActivity"
             android:exported="false" />
     </application>
 

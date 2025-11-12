@@ -24,10 +24,15 @@ import eightbitlab.com.blurview.RenderScriptBlur
 // Cần import Cast
 import com.example.ticketbooking.model.Cast
 import com.example.ticketbooking.ui.detail.DetailFilmViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import com.example.ticketbooking.data.favorite.FavoritesRepository
 
+@AndroidEntryPoint
 class DetailFilmActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailFilmBinding
     private lateinit var viewModel: DetailFilmViewModel
+    @Inject lateinit var favoritesRepository: FavoritesRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,6 +93,13 @@ class DetailFilmActivity : AppCompatActivity() {
             intent.putExtra(IntentKeys.FILM, film)
             startActivity(intent)
         }
+
+        // Nút đánh dấu yêu thích (bookmark)
+        binding.bookmarkBtn.setOnClickListener {
+            val currentFilm = viewModel.film.value ?: return@setOnClickListener
+            val nowFav = favoritesRepository.toggleFavorite(currentFilm)
+            applyFavoriteUi(nowFav)
+        }
     }
 
     private fun bindObservers() {
@@ -122,6 +134,17 @@ class DetailFilmActivity : AppCompatActivity() {
                     binding.castListView.adapter = CastListAdapter(castList)
                 }
             }
+
+            // Áp dụng trạng thái yêu thích ban đầu
+            val isFav = favoritesRepository.isFavorite(film)
+            applyFavoriteUi(isFav)
         }
+    }
+
+    private fun applyFavoriteUi(isFavorite: Boolean) {
+        // Đổi màu biểu tượng để phản ánh trạng thái yêu thích
+        val color = if (isFavorite) getColor(R.color.green) else getColor(R.color.white)
+        binding.bookmarkBtn.setColorFilter(color)
+        binding.bookmarkBtn.contentDescription = if (isFavorite) "Favorited" else "Bookmark"
     }
 }

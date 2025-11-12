@@ -6,7 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ticketbooking.databinding.ItemTimeBinding
 
-class TimeAdapter(private val timeSlots: List<String>) :
+class TimeAdapter(
+    private val timeSlots: List<String>,
+    private val onSelected: (Int) -> Unit
+) :
     RecyclerView.Adapter<TimeAdapter.ViewHolder>() {
     private var selectedPosition = -1
     private var lastSelectedPosition = -1
@@ -31,6 +34,7 @@ class TimeAdapter(private val timeSlots: List<String>) :
                         selectedPosition = position
                         notifyItemChanged(lastSelectedPosition)
                         notifyItemChanged(selectedPosition)
+                        onSelected(position)
                     }
                 }
         }

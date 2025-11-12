@@ -9,10 +9,10 @@
     <string name="s_p_ph_t_h_nh">Sắp phát hành</string>
     <string name="t_m_ki_m_phim">Tìm kiếm phim</string>
     <string name="top_phim">Top phim</string>
-    <string name="hello_pitter_jackson">Hello Pitter Jackson</string>
+    <string name="hello_pitter_jackson">Hello Guest</string>
     <string name="pitterjackson">pitterjackson</string>
     <string name="pitterjackson1">pitterjackson</string>
-    <string name="pitterjacksonn">pitterjackson</string>
+    <string name="pitterjacksonn">guest</string>
     <string name="selected_seats">%1$d Seat Selected</string>
     <string name="price_format">$%1$.2f</string>
     <string name="cart_showtime_fmt">Suất chiếu: %1$s</string>
@@ -20,4 +20,7 @@
     <string name="cart_base_fmt">Tiền vé: $%1$.2f</string>
     <string name="cart_service_fee_fmt">Phí dịch vụ: $%1$.2f</string>
     <string name="cart_vat_fmt">VAT: $%1$.2f</string>
+    <string name="payment_success_title">Thanh toán thành công</string>
+    <string name="payment_showtime_fmt">Suất chiếu: %1$s</string>
+    <string name="back_to_home">Về trang chủ</string>
 </resources>
